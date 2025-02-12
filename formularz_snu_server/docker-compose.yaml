@@ -1,0 +1,54 @@
+services:
+  # Development services
+  postgres:
+    image: postgres:16.3
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: formularz_snu
+      POSTGRES_PASSWORD: "itmUfx0V6SDGR7dFlD0OY9L6tjJ8Ozb3"
+    volumes:
+      - formularz_snu_data:/var/lib/postgresql/data
+    profiles:
+      - '' # Default profile
+      - dev
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "qy9NdXpi2bUO60Vk9aokvzfboa3Wf9Nr"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    profiles:
+      - '' # Default profile
+      - dev
+
+  # Test services
+  postgres_test:
+    image: postgres:16.3
+    ports:
+      - '9090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: formularz_snu_test
+      POSTGRES_PASSWORD: "5ZWKU1TS1-w2OdKWQDFuPRidCES3WVJj"
+    volumes:
+      - formularz_snu_test_data:/var/lib/postgresql/data
+    profiles:
+      - '' # Default profile
+      - test
+  redis_test:
+    image: redis:6.2.6
+    ports:
+      - '9091:6379'
+    command: redis-server --requirepass "bBZWvtm2f2HvCVXksNQTiMILOma894lI"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    profiles:
+      - '' # Default profile
+      - test
+
+volumes:
+  formularz_snu_data:
+  formularz_snu_test_data:

@@ -11,7 +11,43 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
-import 'protocol.dart' as _i3;
+import 'package:formularz_snu_client/src/protocol/form_data.dart' as _i3;
+import 'protocol.dart' as _i4;
+
+/// {@category Endpoint}
+class EndpointConfig extends _i1.EndpointRef {
+  EndpointConfig(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'config';
+
+  _i2.Future<bool> isStudyInProgress() => caller.callServerEndpoint<bool>(
+        'config',
+        'isStudyInProgress',
+        {},
+      );
+}
+
+/// {@category Endpoint}
+class EndpointFormEntry extends _i1.EndpointRef {
+  EndpointFormEntry(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'formEntry';
+
+  _i2.Future<void> submitForm(
+    _i3.FormData data,
+    String participantEmail,
+  ) =>
+      caller.callServerEndpoint<void>(
+        'formEntry',
+        'submitForm',
+        {
+          'data': data,
+          'participantEmail': participantEmail,
+        },
+      );
+}
 
 /// {@category Endpoint}
 class EndpointParticipant extends _i1.EndpointRef {
@@ -20,10 +56,10 @@ class EndpointParticipant extends _i1.EndpointRef {
   @override
   String get name => 'participant';
 
-  _i2.Future<bool> doesEmailExist(String email) =>
+  _i2.Future<bool> doesThisEmailExist(String email) =>
       caller.callServerEndpoint<bool>(
         'participant',
-        'doesEmailExist',
+        'doesThisEmailExist',
         {'email': email},
       );
 }
@@ -44,7 +80,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i3.Protocol(),
+          _i4.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -54,14 +90,23 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
+    config = EndpointConfig(this);
+    formEntry = EndpointFormEntry(this);
     participant = EndpointParticipant(this);
   }
+
+  late final EndpointConfig config;
+
+  late final EndpointFormEntry formEntry;
 
   late final EndpointParticipant participant;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup =>
-      {'participant': participant};
+  Map<String, _i1.EndpointRef> get endpointRefLookup => {
+        'config': config,
+        'formEntry': formEntry,
+        'participant': participant,
+      };
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

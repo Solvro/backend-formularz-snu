@@ -10,28 +10,24 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'package:uuid/uuid.dart' as _i2;
-import 'participant.dart' as _i3;
-import 'form_data.dart' as _i4;
+import 'participant.dart' as _i2;
+import 'form_data.dart' as _i3;
 
 abstract class FormEntry implements _i1.SerializableModel {
   FormEntry._({
     this.id,
     required this.participantId,
     this.participant,
-    _i1.UuidValue? uuid,
     DateTime? timestamp,
     required this.data,
-  })  : uuid = uuid ?? _i2.Uuid().v4obj(),
-        timestamp = timestamp ?? DateTime.now();
+  }) : timestamp = timestamp ?? DateTime.now();
 
   factory FormEntry({
     int? id,
     required int participantId,
-    _i3.Participant? participant,
-    _i1.UuidValue? uuid,
+    _i2.Participant? participant,
     DateTime? timestamp,
-    required _i4.FormData data,
+    required _i3.FormData data,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -40,12 +36,11 @@ abstract class FormEntry implements _i1.SerializableModel {
       participantId: jsonSerialization['participantId'] as int,
       participant: jsonSerialization['participant'] == null
           ? null
-          : _i3.Participant.fromJson(
+          : _i2.Participant.fromJson(
               (jsonSerialization['participant'] as Map<String, dynamic>)),
-      uuid: _i1.UuidValueJsonExtension.fromJson(jsonSerialization['uuid']),
       timestamp:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['timestamp']),
-      data: _i4.FormData.fromJson(
+      data: _i3.FormData.fromJson(
           (jsonSerialization['data'] as Map<String, dynamic>)),
     );
   }
@@ -57,21 +52,18 @@ abstract class FormEntry implements _i1.SerializableModel {
 
   int participantId;
 
-  _i3.Participant? participant;
-
-  _i1.UuidValue uuid;
+  _i2.Participant? participant;
 
   DateTime timestamp;
 
-  _i4.FormData data;
+  _i3.FormData data;
 
   FormEntry copyWith({
     int? id,
     int? participantId,
-    _i3.Participant? participant,
-    _i1.UuidValue? uuid,
+    _i2.Participant? participant,
     DateTime? timestamp,
-    _i4.FormData? data,
+    _i3.FormData? data,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -79,7 +71,6 @@ abstract class FormEntry implements _i1.SerializableModel {
       if (id != null) 'id': id,
       'participantId': participantId,
       if (participant != null) 'participant': participant?.toJson(),
-      'uuid': uuid.toJson(),
       'timestamp': timestamp.toJson(),
       'data': data.toJson(),
     };
@@ -97,15 +88,13 @@ class _FormEntryImpl extends FormEntry {
   _FormEntryImpl({
     int? id,
     required int participantId,
-    _i3.Participant? participant,
-    _i1.UuidValue? uuid,
+    _i2.Participant? participant,
     DateTime? timestamp,
-    required _i4.FormData data,
+    required _i3.FormData data,
   }) : super._(
           id: id,
           participantId: participantId,
           participant: participant,
-          uuid: uuid,
           timestamp: timestamp,
           data: data,
         );
@@ -115,17 +104,15 @@ class _FormEntryImpl extends FormEntry {
     Object? id = _Undefined,
     int? participantId,
     Object? participant = _Undefined,
-    _i1.UuidValue? uuid,
     DateTime? timestamp,
-    _i4.FormData? data,
+    _i3.FormData? data,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,
       participantId: participantId ?? this.participantId,
-      participant: participant is _i3.Participant?
+      participant: participant is _i2.Participant?
           ? participant
           : this.participant?.copyWith(),
-      uuid: uuid ?? this.uuid,
       timestamp: timestamp ?? this.timestamp,
       data: data ?? this.data.copyWith(),
     );

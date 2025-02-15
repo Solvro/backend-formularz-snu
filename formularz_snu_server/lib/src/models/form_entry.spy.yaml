@@ -2,7 +2,6 @@ class: FormEntry
 table: form_entries
 fields:
   participant: Participant?, relation
-  uuid: UuidValue, default=random
   timestamp: DateTime, default=now
   data: FormData
 

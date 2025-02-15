@@ -16,7 +16,7 @@ void main() {
       // pass `sessionBuilder` as a first argument. Refer to the docs on
       // how to use the `sessionBuilder` to set up different test scenarios.
       final greeting =
-          await endpoints.participant.doesEmailExist(sessionBuilder, "Bob");
+          await endpoints.participant.doesThisEmailExist(sessionBuilder, "Bob");
       expect(greeting, "Hello Bob");
     });
   });

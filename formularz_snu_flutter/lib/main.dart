@@ -1,13 +1,13 @@
-import 'package:formularz_snu_client/formularz_snu_client.dart';
-import 'package:flutter/material.dart';
-import 'package:serverpod_flutter/serverpod_flutter.dart';
+import "package:flutter/material.dart";
+import "package:formularz_snu_client/formularz_snu_client.dart";
+import "package:serverpod_flutter/serverpod_flutter.dart";
 
 // Sets up a singleton client object that can be used to talk to the server from
 // anywhere in our app. The client is generated from your server code.
 // The client is set up to connect to a Serverpod running on a local server on
 // the default port. You will need to modify this to connect to staging or
 // production servers.
-var client = Client('http://$localhost:8080/')
+Client client = Client("http://$localhost:8080/")
   ..connectivityMonitor = FlutterConnectivityMonitor();
 
 void main() {
@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Serverpod Demo',
+      title: "Serverpod Demo",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Serverpod Example'),
+      home: const MyHomePage(title: "Serverpod Example"),
     );
   }
 }
@@ -49,16 +49,17 @@ class MyHomePageState extends State<MyHomePage> {
   // Calls the `hello` method of the `example` endpoint. Will set either the
   // `_resultMessage` or `_errorMessage` field, depending on if the call
   // is successful.
-  void _callHello() async {
+  Future<void> _callHello() async {
     try {
-      final result = await client.example.hello(_textEditingController.text);
+      final result =
+          await client.participant.doesEmailExist(_textEditingController.text);
       setState(() {
         _errorMessage = null;
-        _resultMessage = result;
+        _resultMessage = result.toString();
       });
-    } catch (e) {
+    } on Exception catch (e) {
       setState(() {
-        _errorMessage = '$e';
+        _errorMessage = "$e";
       });
     }
   }
@@ -74,19 +75,19 @@ class MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
+              padding: const EdgeInsets.only(bottom: 16),
               child: TextField(
                 controller: _textEditingController,
                 decoration: const InputDecoration(
-                  hintText: 'Enter your name',
+                  hintText: "Enter your name",
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
+              padding: const EdgeInsets.only(bottom: 16),
               child: ElevatedButton(
                 onPressed: _callHello,
-                child: const Text('Send to Server'),
+                child: const Text("Send to Server"),
               ),
             ),
             _ResultDisplay(
@@ -123,7 +124,7 @@ class _ResultDisplay extends StatelessWidget {
       text = resultMessage!;
     } else {
       backgroundColor = Colors.grey[300]!;
-      text = 'No server response yet.';
+      text = "No server response yet.";
     }
 
     return Container(

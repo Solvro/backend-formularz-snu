@@ -14,16 +14,17 @@ import 'dart:async' as _i2;
 import 'protocol.dart' as _i3;
 
 /// {@category Endpoint}
-class EndpointExample extends _i1.EndpointRef {
-  EndpointExample(_i1.EndpointCaller caller) : super(caller);
+class EndpointParticipant extends _i1.EndpointRef {
+  EndpointParticipant(_i1.EndpointCaller caller) : super(caller);
 
   @override
-  String get name => 'example';
+  String get name => 'participant';
 
-  _i2.Future<String> hello(String name) => caller.callServerEndpoint<String>(
-        'example',
-        'hello',
-        {'name': name},
+  _i2.Future<bool> doesEmailExist(String email) =>
+      caller.callServerEndpoint<bool>(
+        'participant',
+        'doesEmailExist',
+        {'email': email},
       );
 }
 
@@ -53,13 +54,14 @@ class Client extends _i1.ServerpodClientShared {
           disconnectStreamsOnLostInternetConnection:
               disconnectStreamsOnLostInternetConnection,
         ) {
-    example = EndpointExample(this);
+    participant = EndpointParticipant(this);
   }
 
-  late final EndpointExample example;
+  late final EndpointParticipant participant;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {'example': example};
+  Map<String, _i1.EndpointRef> get endpointRefLookup =>
+      {'participant': participant};
 
   @override
   Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {};

@@ -94,7 +94,7 @@ void withServerpod(
 }
 
 class TestEndpoints {
-  late final _ExampleEndpoint example;
+  late final _ParticipantEndpoint participant;
 }
 
 class _InternalTestEndpoints extends TestEndpoints
@@ -104,15 +104,15 @@ class _InternalTestEndpoints extends TestEndpoints
     _i2.SerializationManager serializationManager,
     _i2.EndpointDispatch endpoints,
   ) {
-    example = _ExampleEndpoint(
+    participant = _ParticipantEndpoint(
       endpoints,
       serializationManager,
     );
   }
 }
 
-class _ExampleEndpoint {
-  _ExampleEndpoint(
+class _ParticipantEndpoint {
+  _ParticipantEndpoint(
     this._endpointDispatch,
     this._serializationManager,
   );
@@ -121,28 +121,28 @@ class _ExampleEndpoint {
 
   final _i2.SerializationManager _serializationManager;
 
-  _i3.Future<String> hello(
+  _i3.Future<bool> doesEmailExist(
     _i1.TestSessionBuilder sessionBuilder,
-    String name,
+    String email,
   ) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
       var _localUniqueSession =
           (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
-        endpoint: 'example',
-        method: 'hello',
+        endpoint: 'participant',
+        method: 'doesEmailExist',
       );
       try {
         var _localCallContext = await _endpointDispatch.getMethodCallContext(
           createSessionCallback: (_) => _localUniqueSession,
-          endpointPath: 'example',
-          methodName: 'hello',
-          parameters: _i1.testObjectToJson({'name': name}),
+          endpointPath: 'participant',
+          methodName: 'doesEmailExist',
+          parameters: _i1.testObjectToJson({'email': email}),
           serializationManager: _serializationManager,
         );
         var _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
-        ) as _i3.Future<String>);
+        ) as _i3.Future<bool>);
         return _localReturnValue;
       } finally {
         await _localUniqueSession.close();

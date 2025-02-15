@@ -10,13 +10,15 @@
 
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
+import "dart:async" as _i3;
+
+import "package:formularz_snu_server/src/generated/endpoints.dart";
+import "package:formularz_snu_server/src/generated/protocol.dart";
+import "package:serverpod/serverpod.dart" as _i2;
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_test/serverpod_test.dart' as _i1;
-import 'package:serverpod/serverpod.dart' as _i2;
-import 'dart:async' as _i3;
-import 'package:formularz_snu_server/src/generated/protocol.dart';
-import 'package:formularz_snu_server/src/generated/endpoints.dart';
-export 'package:serverpod_test/serverpod_test_public_exports.dart';
+import "package:serverpod_test/serverpod_test.dart" as _i1;
+
+export "package:serverpod_test/serverpod_test_public_exports.dart";
 
 /// Creates a new test group that takes a callback that can be used to write tests.
 /// The callback has two parameters: `sessionBuilder` and `endpoints`.
@@ -126,20 +128,20 @@ class _ParticipantEndpoint {
     String email,
   ) async {
     return _i1.callAwaitableFunctionAndHandleExceptions(() async {
-      var _localUniqueSession =
+      final _localUniqueSession =
           (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
-        endpoint: 'participant',
-        method: 'doesEmailExist',
+        endpoint: "participant",
+        method: "doesEmailExist",
       );
       try {
-        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+        final _localCallContext = await _endpointDispatch.getMethodCallContext(
           createSessionCallback: (_) => _localUniqueSession,
-          endpointPath: 'participant',
-          methodName: 'doesEmailExist',
-          parameters: _i1.testObjectToJson({'email': email}),
+          endpointPath: "participant",
+          methodName: "doesEmailExist",
+          parameters: _i1.testObjectToJson({"email": email}),
           serializationManager: _serializationManager,
         );
-        var _localReturnValue = await (_localCallContext.method.call(
+        final _localReturnValue = await (_localCallContext.method.call(
           _localUniqueSession,
           _localCallContext.arguments,
         ) as _i3.Future<bool>);

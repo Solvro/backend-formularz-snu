@@ -1,7 +1,8 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:formularz_snu_server/src/web/widgets/default_page_widget.dart';
-import 'package:serverpod/serverpod.dart';
+import "package:serverpod/serverpod.dart";
+
+import "../widgets/default_page_widget.dart";
 
 class RouteRoot extends WidgetRoute {
   @override

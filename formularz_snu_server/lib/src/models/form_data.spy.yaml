@@ -1,0 +1,9 @@
+class: FormData
+table: form_data
+fields:
+  inBedStartTime: DateTime
+  fallingAsleepTime: DateTime
+  midNightAwaikingsCount: int
+  totalMidNightAwaikingsTime: Duration
+  wakeUpTime: DateTime
+  outBedTime: DateTime

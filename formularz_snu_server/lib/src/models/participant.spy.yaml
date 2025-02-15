@@ -1,0 +1,5 @@
+class: Participant
+table: participants
+fields:
+  name: String
+  email: String

@@ -1,0 +1,5 @@
+class: GlobalConfig
+table: global_config
+fields:
+  researchStartDate: DateTime
+  researchEndDate: DateTime

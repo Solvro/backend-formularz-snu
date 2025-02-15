@@ -1,0 +1,12 @@
+class: FormEntry
+table: form_entries
+fields:
+  participant: Participant?, relation
+  uuid: UuidValue, default=random
+  timestamp: DateTime, default=now
+  data: FormData
+
+indexes:
+  unique_participant_timestamp_indx:
+    fields: participantId, timestamp
+    unique: true

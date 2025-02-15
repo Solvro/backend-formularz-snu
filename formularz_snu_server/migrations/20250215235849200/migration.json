@@ -1,0 +1,43 @@
+{
+  "actions": [
+    {
+      "type": "alterTable",
+      "alterTable": {
+        "name": "form_entries",
+        "schema": "public",
+        "addColumns": [],
+        "deleteColumns": [
+          "uuid"
+        ],
+        "modifyColumns": [],
+        "addIndexes": [],
+        "deleteIndexes": [],
+        "addForeignKeys": [],
+        "deleteForeignKeys": [],
+        "warnings": [
+          {
+            "type": "columnDropped",
+            "message": "Column \"uuid\" of table \"form_entries\" will be dropped.",
+            "table": "form_entries",
+            "columns": [
+              "uuid"
+            ],
+            "destrucive": true
+          }
+        ]
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "type": "columnDropped",
+      "message": "Column \"uuid\" of table \"form_entries\" will be dropped.",
+      "table": "form_entries",
+      "columns": [
+        "uuid"
+      ],
+      "destrucive": true
+    }
+  ],
+  "migrationApiVersion": 1
+}

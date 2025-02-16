@@ -60,24 +60,29 @@ export const setupAdminJS = async (app) => {
       styles: ["/main.css"],
     },
     locale: {
-      language: "pl",
+      language: "en",
       translations: {
         en: {
           components: {
             Login: {
-              welcomeHeader: "Welcome",
+              welcomeHeader: "Elo żelo!",
               welcomeMessage:
-                "Serverpod is an open-source, scalable app server, written in Dart for the Flutter community, Serverpod Admin allows you to manage all your data in one place",
+                "Witamy w panelu administracyjnym Formularza Snu Solvro",
             },
           },
         },
       },
     },
     branding: {
-      logo: "https://serverpod.dev/assets/img/serverpod-logo.svg",
-      companyName: "Serverpod Admin",
+      logo: "https://solvro.pwr.edu.pl/nextImageExportOptimizer/solvro.e25fc16a-opt-384.WEBP",
+      companyName: "KN Solvro",
       withMadeWithLove: false,
       favicon: "https://serverpod.dev/assets/img/favicon/favicon.ico",
+      theme: {
+        colors: {
+          primary100: "#152959",
+        },
+      },
     },
     pages: {
       runQuery: {

@@ -2,6 +2,7 @@ import { ComponentLoader } from "adminjs";
 import config from "config";
 
 export const logTables = config.get("log_tables") as string[];
+export const tableConfig = config.get("table_config") as string[];
 
 interface BaseConfig {
   show_all_tables: boolean;

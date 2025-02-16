@@ -7,9 +7,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn global add typescript
-
-RUN tsc
+RUN npx tsc
 
 EXPOSE 3000
 

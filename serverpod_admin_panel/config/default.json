@@ -4,6 +4,7 @@
     "show_log_tables": false,
     "table_title": "Wewnętrzne tabele serverpoda"
   },
+  "table_config": ["participants", "form_entries", "global_config"],
   "log_tables": [
     "serverpod_log",
     "serverpod_session_log",

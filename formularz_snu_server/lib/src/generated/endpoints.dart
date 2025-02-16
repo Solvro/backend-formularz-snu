@@ -58,6 +58,25 @@ class Endpoints extends _i1.EndpointDispatch {
       name: 'formEntry',
       endpoint: endpoints['formEntry']!,
       methodConnectors: {
+        'hasTodayAlreadySentResponse': _i1.MethodConnector(
+          name: 'hasTodayAlreadySentResponse',
+          params: {
+            'participantEmail': _i1.ParameterDescription(
+              name: 'participantEmail',
+              type: _i1.getType<String>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['formEntry'] as _i3.FormEntryEndpoint)
+                  .hasTodayAlreadySentResponse(
+            session,
+            params['participantEmail'],
+          ),
+        ),
         'submitForm': _i1.MethodConnector(
           name: 'submitForm',
           params: {
@@ -81,7 +100,7 @@ class Endpoints extends _i1.EndpointDispatch {
             params['data'],
             params['participantEmail'],
           ),
-        )
+        ),
       },
     );
     connectors['participant'] = _i1.EndpointConnector(

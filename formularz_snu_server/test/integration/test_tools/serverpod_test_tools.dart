@@ -172,6 +172,36 @@ class _FormEntryEndpoint {
 
   final _i2.SerializationManager _serializationManager;
 
+  _i3.Future<bool> hasTodayAlreadySentResponse(
+    _i1.TestSessionBuilder sessionBuilder,
+    String participantEmail,
+  ) async {
+    return _i1.callAwaitableFunctionAndHandleExceptions(() async {
+      var _localUniqueSession =
+          (sessionBuilder as _i1.InternalTestSessionBuilder).internalBuild(
+        endpoint: 'formEntry',
+        method: 'hasTodayAlreadySentResponse',
+      );
+      try {
+        var _localCallContext = await _endpointDispatch.getMethodCallContext(
+          createSessionCallback: (_) => _localUniqueSession,
+          endpointPath: 'formEntry',
+          methodName: 'hasTodayAlreadySentResponse',
+          parameters:
+              _i1.testObjectToJson({'participantEmail': participantEmail}),
+          serializationManager: _serializationManager,
+        );
+        var _localReturnValue = await (_localCallContext.method.call(
+          _localUniqueSession,
+          _localCallContext.arguments,
+        ) as _i3.Future<bool>);
+        return _localReturnValue;
+      } finally {
+        await _localUniqueSession.close();
+      }
+    });
+  }
+
   _i3.Future<void> submitForm(
     _i1.TestSessionBuilder sessionBuilder,
     _i4.FormData data,

@@ -1,6 +1,7 @@
 config:
   - isStudyInProgress:
 formEntry:
+  - hasTodayAlreadySentResponse:
   - submitForm:
 participant:
   - doesThisEmailExist:

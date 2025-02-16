@@ -35,6 +35,13 @@ class EndpointFormEntry extends _i1.EndpointRef {
   @override
   String get name => 'formEntry';
 
+  _i2.Future<bool> hasTodayAlreadySentResponse(String participantEmail) =>
+      caller.callServerEndpoint<bool>(
+        'formEntry',
+        'hasTodayAlreadySentResponse',
+        {'participantEmail': participantEmail},
+      );
+
   _i2.Future<void> submitForm(
     _i3.FormData data,
     String participantEmail,

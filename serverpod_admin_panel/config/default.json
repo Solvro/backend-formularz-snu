@@ -1,8 +1,8 @@
 {
   "base_config": {
-    "show_all_tables": true,
-    "show_log_tables": true,
-    "table_title": "Wszystkie tabele"
+    "show_all_tables": false,
+    "show_log_tables": false,
+    "table_title": "Wewnętrzne tabele serverpoda"
   },
   "tables": ["participants", "form_entries", "global_config"],
   "log_tables": [

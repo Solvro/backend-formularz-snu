@@ -18,6 +18,23 @@ export const locale:
         form_entries: "Odpowiedzi na formularz",
         global_config: "Czas trwania badania",
       },
+      actions: {
+        new: "Stwórz nowy",
+        edit: "Edytuj",
+        show: "Detale",
+      },
+      buttons: {
+        save: "Zapisz",
+        confirmRemovalMany_1: "Potwierdź usunięcie {{count}} rekordu",
+        confirmRemovalMany_2: "Potwierdź usunięcie {{count}} rekordów",
+      },
+      properties: {
+        id: "ID",
+        name: "Imię i nazwisko",
+        email: "Email",
+        researchStartDate: "Data rozpoczęcia badania",
+        researchEndDate: "Data zakończenia badania",
+      },
     },
   },
 };

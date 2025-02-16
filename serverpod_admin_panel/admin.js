@@ -11,12 +11,21 @@ import pg from "pg";
 const { Client } = pg;
 
 // Configs
-let baseConfig = config.get("base_config");
-let dbConfig = config.get("db_config");
-let dbTables = config.get("tables");
-let logTables = config.get("log_tables");
-let adminLoginConfig = config.get("admin_login");
-let postgresUrl = `postgresql://${dbConfig.user}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
+const baseConfig = config.get("base_config");
+const dbTables = config.get("tables");
+const logTables = config.get("log_tables");
+const dbConfig = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
+};
+const adminLoginConfig = {
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD,
+};
+const postgresUrl = `postgresql://${dbConfig.user}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
 const componentLoader = new ComponentLoader();
 
 export const setupAdminJS = async (app) => {
@@ -51,7 +60,7 @@ export const setupAdminJS = async (app) => {
       styles: ["/main.css"],
     },
     locale: {
-      language: "en",
+      language: "pl",
       translations: {
         en: {
           components: {

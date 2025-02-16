@@ -1,10 +1,10 @@
 {
   "base_config": {
     "show_all_tables": true,
-    "show_log_tables": false,
+    "show_log_tables": true,
     "table_title": "Formularz Snu Ustawienia"
   },
-  "tables": [],
+  "tables": ["participants", "form_data"],
   "log_tables": [
     "serverpod_log",
     "serverpod_session_log",

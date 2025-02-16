@@ -22,6 +22,10 @@ export const locale:
         new: "Stwórz nowy",
         edit: "Edytuj",
         show: "Detale",
+        delete: "Usuń",
+        list: "Lista",
+        detail: "Szczegóły",
+        filter: "Filtruj",
       },
       buttons: {
         save: "Zapisz",

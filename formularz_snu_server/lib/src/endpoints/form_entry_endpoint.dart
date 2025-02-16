@@ -3,6 +3,30 @@ import "package:serverpod/serverpod.dart";
 import "../generated/protocol.dart";
 
 class FormEntryEndpoint extends Endpoint {
+  Future<bool> hasTodayAlreadySentResponse(
+    Session session,
+    String participantEmail,
+  ) async {
+    final participant = await Participant.db.findFirstRow(
+      session,
+      where: (t) => t.email.equals(participantEmail),
+    );
+    if (participant == null || participant.id == null) {
+      throw Exception("Participant with email $participantEmail not found.");
+    }
+    final today = DateTime.now();
+    final startOfDay = DateTime(today.year, today.month, today.day);
+    final endOfDay = DateTime(today.year, today.month, today.day, 23, 59, 59);
+
+    final entry = await FormEntry.db.findFirstRow(
+      session,
+      where: (t) =>
+          t.participantId.equals(participant.id) &
+          t.timestamp.between(startOfDay, endOfDay),
+    );
+    return entry != null;
+  }
+
   Future<void> submitForm(
     Session session,
     FormData data,

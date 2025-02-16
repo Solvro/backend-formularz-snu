@@ -7,11 +7,11 @@ apiServer:
 # Configuration for the Insights server.
 insightsServer:
   port: 8081
-  publicPort: 8081
+  publicPort: 443
   publicScheme: https
 
 # Configuration for the web server.
 webServer:
   port: 8082
-  publicPort: 8082
+  publicPort: 443
   publicScheme: https

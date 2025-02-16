@@ -2,7 +2,7 @@
 
 import importExportFeature from "@adminjs/import-export";
 import { DatabaseMetadata } from "@adminjs/sql";
-import { baseConfig, componentLoader, logTables } from "./config";
+import { baseConfig, componentLoader, logTables } from "./config.js";
 
 // User and Serverpod Tables
 export function setupTables(db: DatabaseMetadata) {

@@ -1,15 +1,15 @@
 import AdminJS from "adminjs";
 import Adapter, { Database, Resource } from "@adminjs/sql";
-
 import { dark, light, noSidebar } from "@adminjs/themes";
-import { setupTables } from "./adminjs/tables";
-import { baseConfig, componentLoader, postgresUrl } from "./adminjs/config";
-import { authRouter } from "./adminjs/auth";
-import { locale } from "./adminjs/locale";
-import { branding } from "./adminjs/branding";
+import { setupTables } from "./adminjs/tables.js";
+import { baseConfig, componentLoader, postgresUrl } from "./adminjs/config.js";
+import { authRouter } from "./adminjs/auth.js";
+import { locale } from "./adminjs/locale.js";
+import { branding } from "./adminjs/branding.js";
+import * as core from "express-serve-static-core";
 
 // Configs
-export const setupAdminJS = async (app) => {
+export const setupAdminJS = async (app: core.Express) => {
   const Components = {
     Dashboard: componentLoader.add("Dashboard", "./components/dashboard"),
     Custom: componentLoader.add("Custom", "./components/custom"),

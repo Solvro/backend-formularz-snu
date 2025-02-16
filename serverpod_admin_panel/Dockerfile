@@ -7,6 +7,10 @@ RUN yarn install
 
 COPY . .
 
+RUN yarn global add typescript
+
+RUN tsc
+
 EXPOSE 3000
 
-CMD [ "node", "index.js" ]
+CMD [ "node", "dist/index.js" ]

@@ -1,5 +1,5 @@
 /// Setup admin login session
-import { adminLoginConfig, postgresUrl } from "./config";
+import { adminLoginConfig, postgresUrl } from "./config.js";
 import Connect from "connect-pg-simple";
 import session from "express-session";
 import AdminJSExpress from "@adminjs/express";

@@ -14,7 +14,7 @@ export const locale:
         },
       },
       labels: {
-        Participants: "Uczestnicy badania",
+        participants: "Uczestnicy badania",
       },
     },
   },

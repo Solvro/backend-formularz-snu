@@ -15,6 +15,8 @@ export const locale:
       },
       labels: {
         participants: "Uczestnicy badania",
+        form_entries: "Odpowiedzi na formularz",
+        global_config: "Czas trwania badania",
       },
     },
   },

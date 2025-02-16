@@ -2,7 +2,7 @@
   "base_config": {
     "show_all_tables": true,
     "show_log_tables": false,
-    "table_title": "Serverpod Tables"
+    "table_title": "Formularz Snu Ustawienia"
   },
   "tables": [],
   "log_tables": [

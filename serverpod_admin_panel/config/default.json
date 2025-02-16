@@ -2,9 +2,9 @@
   "base_config": {
     "show_all_tables": true,
     "show_log_tables": true,
-    "table_title": "Formularz Snu Ustawienia"
+    "table_title": "Wszystkie tabele"
   },
-  "tables": ["participants", "form_data"],
+  "tables": ["participants", "form_entries", "global_config"],
   "log_tables": [
     "serverpod_log",
     "serverpod_session_log",

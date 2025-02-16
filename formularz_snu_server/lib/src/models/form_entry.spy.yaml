@@ -3,7 +3,12 @@ table: form_entries
 fields:
   participant: Participant?, relation
   timestamp: DateTime, default=now
-  data: FormData
+  inBedStartTime: DateTime
+  fallingAsleepTime: DateTime
+  midNightAwaikingsCount: int
+  totalMidNightAwaikingsTime: Duration
+  wakeUpTime: DateTime
+  outBedTime: DateTime
 
 indexes:
   unique_participant_timestamp_indx:

@@ -21,8 +21,13 @@ class FormEntryEndpoint extends Endpoint {
     await FormEntry.db.insert(session, [
       FormEntry(
         participantId: participant.id!,
-        data: data,
         timestamp: DateTime.now(),
+        fallingAsleepTime: data.fallingAsleepTime,
+        inBedStartTime: data.inBedStartTime,
+        midNightAwaikingsCount: data.midNightAwaikingsCount,
+        wakeUpTime: data.wakeUpTime,
+        outBedTime: data.outBedTime,
+        totalMidNightAwaikingsTime: data.totalMidNightAwaikingsTime,
       ),
     ]);
   }

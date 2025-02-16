@@ -11,7 +11,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'participant.dart' as _i2;
-import 'form_data.dart' as _i3;
 
 abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
   FormEntry._({
@@ -19,7 +18,12 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     required this.participantId,
     this.participant,
     DateTime? timestamp,
-    required this.data,
+    required this.inBedStartTime,
+    required this.fallingAsleepTime,
+    required this.midNightAwaikingsCount,
+    required this.totalMidNightAwaikingsTime,
+    required this.wakeUpTime,
+    required this.outBedTime,
   }) : timestamp = timestamp ?? DateTime.now();
 
   factory FormEntry({
@@ -27,7 +31,12 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     required int participantId,
     _i2.Participant? participant,
     DateTime? timestamp,
-    required _i3.FormData data,
+    required DateTime inBedStartTime,
+    required DateTime fallingAsleepTime,
+    required int midNightAwaikingsCount,
+    required Duration totalMidNightAwaikingsTime,
+    required DateTime wakeUpTime,
+    required DateTime outBedTime,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -40,8 +49,18 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
               (jsonSerialization['participant'] as Map<String, dynamic>)),
       timestamp:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['timestamp']),
-      data: _i3.FormData.fromJson(
-          (jsonSerialization['data'] as Map<String, dynamic>)),
+      inBedStartTime: _i1.DateTimeJsonExtension.fromJson(
+          jsonSerialization['inBedStartTime']),
+      fallingAsleepTime: _i1.DateTimeJsonExtension.fromJson(
+          jsonSerialization['fallingAsleepTime']),
+      midNightAwaikingsCount:
+          jsonSerialization['midNightAwaikingsCount'] as int,
+      totalMidNightAwaikingsTime: _i1.DurationJsonExtension.fromJson(
+          jsonSerialization['totalMidNightAwaikingsTime']),
+      wakeUpTime:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
+      outBedTime:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
     );
   }
 
@@ -58,7 +77,17 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
 
   DateTime timestamp;
 
-  _i3.FormData data;
+  DateTime inBedStartTime;
+
+  DateTime fallingAsleepTime;
+
+  int midNightAwaikingsCount;
+
+  Duration totalMidNightAwaikingsTime;
+
+  DateTime wakeUpTime;
+
+  DateTime outBedTime;
 
   @override
   _i1.Table get table => t;
@@ -68,7 +97,12 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     int? participantId,
     _i2.Participant? participant,
     DateTime? timestamp,
-    _i3.FormData? data,
+    DateTime? inBedStartTime,
+    DateTime? fallingAsleepTime,
+    int? midNightAwaikingsCount,
+    Duration? totalMidNightAwaikingsTime,
+    DateTime? wakeUpTime,
+    DateTime? outBedTime,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -77,7 +111,12 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
       'participantId': participantId,
       if (participant != null) 'participant': participant?.toJson(),
       'timestamp': timestamp.toJson(),
-      'data': data.toJson(),
+      'inBedStartTime': inBedStartTime.toJson(),
+      'fallingAsleepTime': fallingAsleepTime.toJson(),
+      'midNightAwaikingsCount': midNightAwaikingsCount,
+      'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
+      'wakeUpTime': wakeUpTime.toJson(),
+      'outBedTime': outBedTime.toJson(),
     };
   }
 
@@ -88,7 +127,12 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
       'participantId': participantId,
       if (participant != null) 'participant': participant?.toJsonForProtocol(),
       'timestamp': timestamp.toJson(),
-      'data': data.toJsonForProtocol(),
+      'inBedStartTime': inBedStartTime.toJson(),
+      'fallingAsleepTime': fallingAsleepTime.toJson(),
+      'midNightAwaikingsCount': midNightAwaikingsCount,
+      'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
+      'wakeUpTime': wakeUpTime.toJson(),
+      'outBedTime': outBedTime.toJson(),
     };
   }
 
@@ -130,13 +174,23 @@ class _FormEntryImpl extends FormEntry {
     required int participantId,
     _i2.Participant? participant,
     DateTime? timestamp,
-    required _i3.FormData data,
+    required DateTime inBedStartTime,
+    required DateTime fallingAsleepTime,
+    required int midNightAwaikingsCount,
+    required Duration totalMidNightAwaikingsTime,
+    required DateTime wakeUpTime,
+    required DateTime outBedTime,
   }) : super._(
           id: id,
           participantId: participantId,
           participant: participant,
           timestamp: timestamp,
-          data: data,
+          inBedStartTime: inBedStartTime,
+          fallingAsleepTime: fallingAsleepTime,
+          midNightAwaikingsCount: midNightAwaikingsCount,
+          totalMidNightAwaikingsTime: totalMidNightAwaikingsTime,
+          wakeUpTime: wakeUpTime,
+          outBedTime: outBedTime,
         );
 
   @override
@@ -145,7 +199,12 @@ class _FormEntryImpl extends FormEntry {
     int? participantId,
     Object? participant = _Undefined,
     DateTime? timestamp,
-    _i3.FormData? data,
+    DateTime? inBedStartTime,
+    DateTime? fallingAsleepTime,
+    int? midNightAwaikingsCount,
+    Duration? totalMidNightAwaikingsTime,
+    DateTime? wakeUpTime,
+    DateTime? outBedTime,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,
@@ -154,7 +213,14 @@ class _FormEntryImpl extends FormEntry {
           ? participant
           : this.participant?.copyWith(),
       timestamp: timestamp ?? this.timestamp,
-      data: data ?? this.data.copyWith(),
+      inBedStartTime: inBedStartTime ?? this.inBedStartTime,
+      fallingAsleepTime: fallingAsleepTime ?? this.fallingAsleepTime,
+      midNightAwaikingsCount:
+          midNightAwaikingsCount ?? this.midNightAwaikingsCount,
+      totalMidNightAwaikingsTime:
+          totalMidNightAwaikingsTime ?? this.totalMidNightAwaikingsTime,
+      wakeUpTime: wakeUpTime ?? this.wakeUpTime,
+      outBedTime: outBedTime ?? this.outBedTime,
     );
   }
 }
@@ -170,8 +236,28 @@ class FormEntryTable extends _i1.Table {
       this,
       hasDefault: true,
     );
-    data = _i1.ColumnSerializable(
-      'data',
+    inBedStartTime = _i1.ColumnDateTime(
+      'inBedStartTime',
+      this,
+    );
+    fallingAsleepTime = _i1.ColumnDateTime(
+      'fallingAsleepTime',
+      this,
+    );
+    midNightAwaikingsCount = _i1.ColumnInt(
+      'midNightAwaikingsCount',
+      this,
+    );
+    totalMidNightAwaikingsTime = _i1.ColumnDuration(
+      'totalMidNightAwaikingsTime',
+      this,
+    );
+    wakeUpTime = _i1.ColumnDateTime(
+      'wakeUpTime',
+      this,
+    );
+    outBedTime = _i1.ColumnDateTime(
+      'outBedTime',
       this,
     );
   }
@@ -182,7 +268,17 @@ class FormEntryTable extends _i1.Table {
 
   late final _i1.ColumnDateTime timestamp;
 
-  late final _i1.ColumnSerializable data;
+  late final _i1.ColumnDateTime inBedStartTime;
+
+  late final _i1.ColumnDateTime fallingAsleepTime;
+
+  late final _i1.ColumnInt midNightAwaikingsCount;
+
+  late final _i1.ColumnDuration totalMidNightAwaikingsTime;
+
+  late final _i1.ColumnDateTime wakeUpTime;
+
+  late final _i1.ColumnDateTime outBedTime;
 
   _i2.ParticipantTable get participant {
     if (_participant != null) return _participant!;
@@ -202,7 +298,12 @@ class FormEntryTable extends _i1.Table {
         id,
         participantId,
         timestamp,
-        data,
+        inBedStartTime,
+        fallingAsleepTime,
+        midNightAwaikingsCount,
+        totalMidNightAwaikingsTime,
+        wakeUpTime,
+        outBedTime,
       ];
 
   @override

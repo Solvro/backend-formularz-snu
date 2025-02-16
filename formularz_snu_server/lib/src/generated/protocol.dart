@@ -29,8 +29,8 @@ class Protocol extends _i1.SerializationManagerServer {
 
   static final List<_i2.TableDefinition> targetTableDefinitions = [
     _i2.TableDefinition(
-      name: 'form_data',
-      dartName: 'FormData',
+      name: 'form_entries',
+      dartName: 'FormEntry',
       schema: 'public',
       module: 'formularz_snu',
       columns: [
@@ -39,7 +39,20 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'form_data_id_seq\'::regclass)',
+          columnDefault: 'nextval(\'form_entries_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'participantId',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'timestamp',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+          columnDefault: 'CURRENT_TIMESTAMP',
         ),
         _i2.ColumnDefinition(
           name: 'inBedStartTime',
@@ -76,57 +89,6 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.timestampWithoutTimeZone,
           isNullable: false,
           dartType: 'DateTime',
-        ),
-      ],
-      foreignKeys: [],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'form_data_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            )
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        )
-      ],
-      managed: true,
-    ),
-    _i2.TableDefinition(
-      name: 'form_entries',
-      dartName: 'FormEntry',
-      schema: 'public',
-      module: 'formularz_snu',
-      columns: [
-        _i2.ColumnDefinition(
-          name: 'id',
-          columnType: _i2.ColumnType.bigint,
-          isNullable: false,
-          dartType: 'int?',
-          columnDefault: 'nextval(\'form_entries_id_seq\'::regclass)',
-        ),
-        _i2.ColumnDefinition(
-          name: 'participantId',
-          columnType: _i2.ColumnType.bigint,
-          isNullable: false,
-          dartType: 'int',
-        ),
-        _i2.ColumnDefinition(
-          name: 'timestamp',
-          columnType: _i2.ColumnType.timestampWithoutTimeZone,
-          isNullable: false,
-          dartType: 'DateTime',
-          columnDefault: 'CURRENT_TIMESTAMP',
-        ),
-        _i2.ColumnDefinition(
-          name: 'data',
-          columnType: _i2.ColumnType.json,
-          isNullable: false,
-          dartType: 'protocol:FormData',
         ),
       ],
       foreignKeys: [
@@ -359,8 +321,6 @@ class Protocol extends _i1.SerializationManagerServer {
       }
     }
     switch (t) {
-      case _i3.FormData:
-        return _i3.FormData.t;
       case _i4.FormEntry:
         return _i4.FormEntry.t;
       case _i5.GlobalConfig:

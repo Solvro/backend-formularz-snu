@@ -127,7 +127,7 @@ const rawQueryHandler = async (request, response, context) => {
 // Setup AdminJS Tables
 // User  and Serverpod Tables
 const setupTables = (db) => {
-  var tables = [];
+  const tables = [];
 
   // User Tables
   dbTables.forEach((table) => {
@@ -136,7 +136,7 @@ const setupTables = (db) => {
       features: [importExportFeature({ componentLoader })],
       options: {
         navigation: {
-          name: "Tables",
+          name: "Ustawienia Formularza Snu",
         },
       },
     });
@@ -150,7 +150,7 @@ const setupTables = (db) => {
         features: [importExportFeature({ componentLoader })],
         options: {
           navigation: {
-            name: "Logs",
+            name: "Logi",
           },
         },
       });

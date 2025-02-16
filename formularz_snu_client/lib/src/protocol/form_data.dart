@@ -13,7 +13,6 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
 abstract class FormData implements _i1.SerializableModel {
   FormData._({
-    this.id,
     required this.inBedStartTime,
     required this.fallingAsleepTime,
     required this.midNightAwaikingsCount,
@@ -23,7 +22,6 @@ abstract class FormData implements _i1.SerializableModel {
   });
 
   factory FormData({
-    int? id,
     required DateTime inBedStartTime,
     required DateTime fallingAsleepTime,
     required int midNightAwaikingsCount,
@@ -34,7 +32,6 @@ abstract class FormData implements _i1.SerializableModel {
 
   factory FormData.fromJson(Map<String, dynamic> jsonSerialization) {
     return FormData(
-      id: jsonSerialization['id'] as int?,
       inBedStartTime: _i1.DateTimeJsonExtension.fromJson(
           jsonSerialization['inBedStartTime']),
       fallingAsleepTime: _i1.DateTimeJsonExtension.fromJson(
@@ -50,11 +47,6 @@ abstract class FormData implements _i1.SerializableModel {
     );
   }
 
-  /// The database id, set if the object has been inserted into the
-  /// database or if it has been fetched from the database. Otherwise,
-  /// the id will be null.
-  int? id;
-
   DateTime inBedStartTime;
 
   DateTime fallingAsleepTime;
@@ -68,7 +60,6 @@ abstract class FormData implements _i1.SerializableModel {
   DateTime outBedTime;
 
   FormData copyWith({
-    int? id,
     DateTime? inBedStartTime,
     DateTime? fallingAsleepTime,
     int? midNightAwaikingsCount,
@@ -79,7 +70,6 @@ abstract class FormData implements _i1.SerializableModel {
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (id != null) 'id': id,
       'inBedStartTime': inBedStartTime.toJson(),
       'fallingAsleepTime': fallingAsleepTime.toJson(),
       'midNightAwaikingsCount': midNightAwaikingsCount,
@@ -95,11 +85,8 @@ abstract class FormData implements _i1.SerializableModel {
   }
 }
 
-class _Undefined {}
-
 class _FormDataImpl extends FormData {
   _FormDataImpl({
-    int? id,
     required DateTime inBedStartTime,
     required DateTime fallingAsleepTime,
     required int midNightAwaikingsCount,
@@ -107,7 +94,6 @@ class _FormDataImpl extends FormData {
     required DateTime wakeUpTime,
     required DateTime outBedTime,
   }) : super._(
-          id: id,
           inBedStartTime: inBedStartTime,
           fallingAsleepTime: fallingAsleepTime,
           midNightAwaikingsCount: midNightAwaikingsCount,
@@ -118,7 +104,6 @@ class _FormDataImpl extends FormData {
 
   @override
   FormData copyWith({
-    Object? id = _Undefined,
     DateTime? inBedStartTime,
     DateTime? fallingAsleepTime,
     int? midNightAwaikingsCount,
@@ -127,7 +112,6 @@ class _FormDataImpl extends FormData {
     DateTime? outBedTime,
   }) {
     return FormData(
-      id: id is int? ? id : this.id,
       inBedStartTime: inBedStartTime ?? this.inBedStartTime,
       fallingAsleepTime: fallingAsleepTime ?? this.fallingAsleepTime,
       midNightAwaikingsCount:

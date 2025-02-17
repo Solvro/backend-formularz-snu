@@ -13,7 +13,7 @@ export function setupTables(db: DatabaseMetadata) {
   const tables: ResourceWithOptions[] = [
     {
       resource: db.table("global_config"),
-      features: [importExportFeature({ componentLoader })],
+      features: [],
       options: {
         href: ({ h, resource }) => {
           return h.showUrl(resource.decorate().id(), "1", undefined);

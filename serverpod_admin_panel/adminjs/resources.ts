@@ -46,12 +46,12 @@ export function setupTables(db: DatabaseMetadata) {
     {
       resource: db.table("participants"),
       features: [importExportFeature({ componentLoader })],
-      options: { navigation },
+      options: { navigation, filterProperties: ["email", "name"] },
     },
     {
       resource: db.table("form_entries"),
       features: [importExportFeature({ componentLoader })],
-      options: { navigation },
+      options: { navigation, filterProperties: ["participantId", "timestamp"] },
     },
     ...(baseConfig.show_log_tables
       ? logTables.map((table) => ({

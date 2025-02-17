@@ -11,17 +11,20 @@ import { styled } from "@adminjs/design-system/styled-components";
 
 const boxes = () => [
   {
+    href: "/resources/global_config/records/1/show",
     variant: "Moon",
     title: "Czas trwania badania",
     subtitle:
       "Ustaw początkową i końcową datę, kiedy uczestnicy badania mogą wypełniać formularz snu.",
   },
   {
+    href: "resources/participants",
     variant: "Docs",
     title: "Lista uczestników",
     subtitle: `Dodaj maile uczestników badania, którzy mają uprawnienia wypełniać formularz snu w aplikacji mobilnej.`,
   },
   {
+    href: "/resources/form_entries",
     variant: "Clip",
     title: "Przeglądaj odpowiedzi",
     subtitle:
@@ -60,7 +63,7 @@ export const Dashboard: React.FC = () => {
     >
       {boxes().map((box, index) => (
         <Box key={index} width={[1, 1 / 2, 1 / 2, 1 / 3]} p="lg">
-          <Card {...defaultProps} target="_blank">
+          <Card {...defaultProps} as="a" flex href={box.href}>
             <Text textAlign="center">
               <Illustration
                 variant={box.variant as IllustrationProps["variant"]}
@@ -88,9 +91,8 @@ export const Dashboard: React.FC = () => {
           <Box ml="xl">
             <H5>{"Excel Eksport "}</H5>
             <Text>
-              {
-                "Wyeksportuj wysłane odpowiedzi do excela, wraz z wyliczonymi polami."
-              }
+              "Wyeksportuj wysłane odpowiedzi do excela, wraz z wyliczonymi
+              polami."
             </Text>
           </Box>
         </Card>

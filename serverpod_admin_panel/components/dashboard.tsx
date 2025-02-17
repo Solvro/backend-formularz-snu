@@ -82,7 +82,7 @@ export const Dashboard: React.FC = () => {
           {...defaultProps}
           as="a"
           flex
-          href="https://github.com/serverpod/serverpod/issues"
+          href="https://formularz-snu.s.solvro.pl/form_entry/export"
           target="_blank"
         >
           <Box flexShrink={0}>

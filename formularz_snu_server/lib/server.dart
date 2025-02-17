@@ -2,6 +2,7 @@ import "package:serverpod/serverpod.dart";
 
 import "src/generated/endpoints.dart";
 import "src/generated/protocol.dart";
+import "src/web/routes/export_excel.dart";
 import "src/web/routes/root.dart";
 
 // This is the starting point of your Serverpod server. In most cases, you will
@@ -18,6 +19,8 @@ Future<void> run(List<String> args) async {
 
   // If you are using any future calls, they need to be registered here.
   // pod.registerFutureCall(ExampleFutureCall(), 'exampleFutureCall');
+
+  pod.webServer.addRoute(ExportExcelRoute(), "/form_entry/export");
 
   // Setup a default page at the web root.
   pod.webServer.addRoute(RouteRoot(), "/");

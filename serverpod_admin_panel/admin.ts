@@ -1,7 +1,7 @@
 import AdminJS from "adminjs";
 import Adapter, { Database, Resource } from "@adminjs/sql";
 import { dark, light, noSidebar } from "@adminjs/themes";
-import { setupTables } from "./adminjs/tables.js";
+import { setupTables } from "./adminjs/resources.js";
 import { baseConfig, componentLoader, postgresUrl } from "./adminjs/config.js";
 import { authRouter } from "./adminjs/auth.js";
 import { locale } from "./adminjs/locale.js";

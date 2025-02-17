@@ -8,35 +8,76 @@ import {
   logTables,
   tableConfig,
 } from "./config.js";
+import { ResourceOptions, ResourceWithOptions, ViewHelpers } from "adminjs";
 
-// User and Serverpod Tables
 export function setupTables(db: DatabaseMetadata) {
-  const tables = tableConfig.map((table) => ({
-    resource: db.table(table),
-    features: [importExportFeature({ componentLoader })],
-    options: {
-      navigation: {
-        name: "Ustawienia Formularza Snu",
-        icon: "Settings",
-      },
-    },
-  }));
-
-  // Log Tables
-  if (baseConfig.show_log_tables) {
-    logTables.forEach((table) => {
-      tables.push({
+  const tables: ResourceWithOptions[] = [
+    ...tableConfig.map((table) => {
+      const isSingleton = table === "global_config";
+      return {
         resource: db.table(table),
         features: [importExportFeature({ componentLoader })],
         options: {
+          href:
+            table === "global_config"
+              ? ({ h, resource }) => {
+                  return h.showUrl(resource.decorate().id(), "1", undefined);
+                }
+              : undefined,
           navigation: {
-            name: "Logi",
-            icon: "List",
+            name: "Ustawienia Formularza Snu",
+            icon: "Settings",
           },
-        },
-      });
-    });
-  }
+          actions: {
+            list: {
+              showFilter: false,
+            },
+            new: {
+              isAccessible: !isSingleton,
+              isVisible: !isSingleton,
+            },
+            delete: {
+              isAccessible: !isSingleton,
+              isVisible: !isSingleton,
+            },
+            bulkDelete: {
+              isAccessible: !isSingleton,
+              isVisible: !isSingleton,
+            },
+          },
+        } as ResourceOptions,
+      };
+    }),
+    ...(baseConfig.show_log_tables
+      ? logTables.map((table) => ({
+          resource: db.table(table),
+          features: [importExportFeature({ componentLoader })],
+          options: {
+            navigation: {
+              name: "Logi",
+              icon: "List",
+            },
+            actions: {
+              list: {
+                showFilter: true,
+              },
+              new: {
+                isAccessible: false,
+                isVisible: false,
+              },
+              delete: {
+                isAccessible: false,
+                isVisible: false,
+              },
+              bulkDelete: {
+                isAccessible: false,
+                isVisible: false,
+              },
+            },
+          },
+        }))
+      : []),
+  ];
 
   return tables;
 }

@@ -21,10 +21,9 @@ export const locale:
       actions: {
         new: "Stwórz nowy",
         edit: "Edytuj",
-        show: "Detale",
+        show: "Szczegóły",
         delete: "Usuń",
         list: "Lista",
-        detail: "Szczegóły",
         filter: "Filtruj",
       },
       buttons: {

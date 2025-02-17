@@ -2,6 +2,7 @@ import React from "react";
 import {
   Box,
   H5,
+  Icon,
   Illustration,
   IllustrationProps,
   Text,
@@ -10,20 +11,21 @@ import { styled } from "@adminjs/design-system/styled-components";
 
 const boxes = () => [
   {
-    variant: "Planet",
-    title: "World-class logging",
+    variant: "Moon",
+    title: "Czas trwania badania",
     subtitle:
-      "Stop struggling. You no longer need to search through endless server logs. Pinpoint exceptions and slow database queries in an easy-to-use user interface with a single click.",
+      "Ustaw początkową i końcową datę, kiedy uczestnicy badania mogą wypełniać formularz snu.",
   },
   {
-    variant: "DocumentCheck",
-    title: "Built-in caching",
-    subtitle: `Cut down on your database costs. Don't save all your data permanently when you don't have to. Serverpod comes with a high-performance distributed cache built right in.`,
+    variant: "Docs",
+    title: "Lista uczestników",
+    subtitle: `Dodaj maile uczestników badania, którzy mają uprawnienia wypełniać formularz snu w aplikacji mobilnej.`,
   },
   {
-    variant: "DocumentSearch",
-    title: "Revolutionary ORM",
-    subtitle: `Save time. Talking with your database can be a hassle. With Serverpod's ORM, your queries use native Dart types and null-safety. There is a straight path from your statically checked code to the database.`,
+    variant: "Clip",
+    title: "Przeglądaj odpowiedzi",
+    subtitle:
+      "Przeglądaj odpowiedzi na formularz snu wraz z ich szczegółami. Polecamy jednak opcję eksportu do excela.",
   },
 ];
 
@@ -72,33 +74,7 @@ export const Dashboard: React.FC = () => {
         </Box>
       ))}
 
-      <Box width={[1, 1, 1 / 2]} p="lg">
-        <Card
-          {...defaultProps}
-          as="a"
-          flex
-          href="https://docs.serverpod.dev/"
-          target="_blank"
-        >
-          <Box flexShrink={0}>
-            <img
-              src="https://serverpod.dev/assets/img/illustration.webp"
-              alt="Illustration Serverpod"
-              height={80}
-            />
-          </Box>
-          <Box ml="xl">
-            <H5>{"The missing server for Flutter"}</H5>
-            <Text>
-              {
-                "Serverpod is an open-source, scalable app server, written in Dart for the Flutter community."
-              }
-            </Text>
-          </Box>
-        </Card>
-      </Box>
-
-      <Box width={[1, 1, 1 / 2]} p="lg">
+      <Box width={[1, 1, 1]} p="lg">
         <Card
           {...defaultProps}
           as="a"
@@ -107,11 +83,15 @@ export const Dashboard: React.FC = () => {
           target="_blank"
         >
           <Box flexShrink={0}>
-            <Illustration variant="GithubLogo" />
+            <Icon icon="Download" size="64" />
           </Box>
           <Box ml="xl">
-            <H5>{"Found a Bug? need improvement?"}</H5>
-            <Text>{"Raise an issue on our GitHub repo"}</Text>
+            <H5>{"Excel Eksport "}</H5>
+            <Text>
+              {
+                "Wyeksportuj wysłane odpowiedzi do excela, wraz z wyliczonymi polami."
+              }
+            </Text>
           </Box>
         </Card>
       </Box>

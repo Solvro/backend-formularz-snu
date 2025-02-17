@@ -7,7 +7,7 @@ import { ResourceOptions, ResourceWithOptions, ViewHelpers } from "adminjs";
 
 export function setupTables(db: DatabaseMetadata) {
   const navigation = {
-    name: "Ustawienia Formularza Snu",
+    name: "Formularz Snu",
     icon: "Settings",
   };
   const tables: ResourceWithOptions[] = [

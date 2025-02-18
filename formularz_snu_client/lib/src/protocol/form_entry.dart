@@ -64,8 +64,8 @@ abstract class FormEntry implements _i1.SerializableModel {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality:
-          _i3.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
+      sleepQuality: _i3.SleepScore.fromJson(
+          (jsonSerialization['sleepQuality'] as String)),
     );
   }
 

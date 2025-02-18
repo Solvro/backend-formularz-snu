@@ -23,36 +23,36 @@ enum SleepScore implements _i1.SerializableModel {
   nine,
   ten;
 
-  static SleepScore fromJson(int index) {
-    switch (index) {
-      case 0:
+  static SleepScore fromJson(String name) {
+    switch (name) {
+      case 'one':
         return one;
-      case 1:
+      case 'two':
         return two;
-      case 2:
+      case 'three':
         return three;
-      case 3:
+      case 'four':
         return four;
-      case 4:
+      case 'five':
         return five;
-      case 5:
+      case 'six':
         return six;
-      case 6:
+      case 'seven':
         return seven;
-      case 7:
+      case 'eight':
         return eight;
-      case 8:
+      case 'nine':
         return nine;
-      case 9:
+      case 'ten':
         return ten;
       default:
         throw ArgumentError(
-            'Value "$index" cannot be converted to "SleepScore"');
+            'Value "$name" cannot be converted to "SleepScore"');
     }
   }
 
   @override
-  int toJson() => index;
+  String toJson() => name;
   @override
   String toString() => name;
 }

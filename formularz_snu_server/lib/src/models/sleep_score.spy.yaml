@@ -1,4 +1,5 @@
 enum: SleepScore
+serialized: byName
 values:
   - one
   - two

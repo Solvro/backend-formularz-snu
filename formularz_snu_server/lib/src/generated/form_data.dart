@@ -48,8 +48,8 @@ abstract class FormData
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality:
-          _i2.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
+      sleepQuality: _i2.SleepScore.fromJson(
+          (jsonSerialization['sleepQuality'] as String)),
     );
   }
 

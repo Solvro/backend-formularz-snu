@@ -64,8 +64,8 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality:
-          _i3.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
+      sleepQuality: _i3.SleepScore.fromJson(
+          (jsonSerialization['sleepQuality'] as String)),
     );
   }
 
@@ -277,7 +277,7 @@ class FormEntryTable extends _i1.Table {
     sleepQuality = _i1.ColumnEnum(
       'sleepQuality',
       this,
-      _i1.EnumSerialization.byIndex,
+      _i1.EnumSerialization.byName,
     );
   }
 

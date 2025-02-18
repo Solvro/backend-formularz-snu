@@ -19,13 +19,13 @@ Future<List<int>> exportFormEntriesToExcel(
     TextCellValue("Znacznik czasu odpowiedzi"),
     TextCellValue("Godzina położenia się do łóżka"),
     TextCellValue("Godzina zaśnięcia"),
-    TextCellValue("Ile czasu zajęło zaśnięcie"),
+    TextCellValue("Ile czasu zajęło zaśnięcie [min]"),
     TextCellValue("Liczba pobudek w nocy"),
-    TextCellValue("Całkowity czas przebudzeń w nocy"),
+    TextCellValue("Całkowity czas przebudzeń w nocy [min]"),
     TextCellValue("Godzina pobudki"),
     TextCellValue("Godzina wstania z łóżka"),
-    TextCellValue("Całkowity czas spędzony w łóżku"),
-    TextCellValue("Całkowity czas snu"),
+    TextCellValue("Całkowity czas spędzony w łóżku [min]"),
+    TextCellValue("Całkowity czas snu [min]"),
     TextCellValue("Ocena snu"),
   ]);
 
@@ -43,24 +43,24 @@ Future<List<int>> exportFormEntriesToExcel(
       DateTimeCellValue.fromDateTime(entry.timestamp),
       DateTimeCellValue.fromDateTime(entry.inBedStartTime),
       DateTimeCellValue.fromDateTime(entry.fallingAsleepTime),
-      TimeCellValue.fromDuration(
-        // ile czasu zajęło zaśnięcie
-        entry.fallingAsleepTime.difference(entry.inBedStartTime),
+      IntCellValue(
+        // Ile czasu zajęło zaśnięcie
+        entry.fallingAsleepTime.difference(entry.inBedStartTime).inMinutes,
       ),
       IntCellValue(entry.midNightAwaikingsCount),
-      TimeCellValue.fromDuration(entry.totalMidNightAwaikingsTime),
+      IntCellValue(entry.totalMidNightAwaikingsTime.inMinutes), // Całkowity czas przebudzeń w nocy
       DateTimeCellValue.fromDateTime(entry.wakeUpTime),
       DateTimeCellValue.fromDateTime(entry.outBedTime),
-      TimeCellValue.fromDuration(
+      IntCellValue(
         // Całkowity czas spędzony w łóżku
-        entry.outBedTime.difference(entry.inBedStartTime),
+        entry.outBedTime.difference(entry.inBedStartTime).inMinutes,
       ),
       // Całkowity czas snu
-      TimeCellValue.fromDuration(
-        entry.wakeUpTime.difference(entry.fallingAsleepTime),
-      ),
-      // Ocena snu
       IntCellValue(
+        entry.wakeUpTime.difference(entry.fallingAsleepTime).inMinutes,
+      ),
+      IntCellValue(
+        // Ocena snu
         switch (entry.sleepQuality) {
           SleepScore.one => 1,
           SleepScore.two => 2,
@@ -74,7 +74,7 @@ Future<List<int>> exportFormEntriesToExcel(
           SleepScore.ten => 10,
         },
       ),
-    ]);
+    ,,,,]);
   }
 
   return excel.encode()!;

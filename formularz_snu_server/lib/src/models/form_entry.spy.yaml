@@ -9,6 +9,7 @@ fields:
   totalMidNightAwaikingsTime: Duration
   wakeUpTime: DateTime
   outBedTime: DateTime
+  sleepQuality: SleepScore
 
 indexes:
   unique_participant_timestamp_indx:

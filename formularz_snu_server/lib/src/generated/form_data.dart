@@ -10,6 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
+import 'sleep_score.dart' as _i2;
 
 abstract class FormData
     implements _i1.SerializableModel, _i1.ProtocolSerialization {
@@ -20,6 +21,7 @@ abstract class FormData
     required this.totalMidNightAwaikingsTime,
     required this.wakeUpTime,
     required this.outBedTime,
+    required this.sleepQuality,
   });
 
   factory FormData({
@@ -29,6 +31,7 @@ abstract class FormData
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i2.SleepScore sleepQuality,
   }) = _FormDataImpl;
 
   factory FormData.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -45,6 +48,8 @@ abstract class FormData
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
+      sleepQuality:
+          _i2.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
     );
   }
 
@@ -60,6 +65,8 @@ abstract class FormData
 
   DateTime outBedTime;
 
+  _i2.SleepScore sleepQuality;
+
   FormData copyWith({
     DateTime? inBedStartTime,
     DateTime? fallingAsleepTime,
@@ -67,6 +74,7 @@ abstract class FormData
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i2.SleepScore? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -77,6 +85,7 @@ abstract class FormData
       'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
       'wakeUpTime': wakeUpTime.toJson(),
       'outBedTime': outBedTime.toJson(),
+      'sleepQuality': sleepQuality.toJson(),
     };
   }
 
@@ -89,6 +98,7 @@ abstract class FormData
       'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
       'wakeUpTime': wakeUpTime.toJson(),
       'outBedTime': outBedTime.toJson(),
+      'sleepQuality': sleepQuality.toJson(),
     };
   }
 
@@ -106,6 +116,7 @@ class _FormDataImpl extends FormData {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i2.SleepScore sleepQuality,
   }) : super._(
           inBedStartTime: inBedStartTime,
           fallingAsleepTime: fallingAsleepTime,
@@ -113,6 +124,7 @@ class _FormDataImpl extends FormData {
           totalMidNightAwaikingsTime: totalMidNightAwaikingsTime,
           wakeUpTime: wakeUpTime,
           outBedTime: outBedTime,
+          sleepQuality: sleepQuality,
         );
 
   @override
@@ -123,6 +135,7 @@ class _FormDataImpl extends FormData {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i2.SleepScore? sleepQuality,
   }) {
     return FormData(
       inBedStartTime: inBedStartTime ?? this.inBedStartTime,
@@ -133,6 +146,7 @@ class _FormDataImpl extends FormData {
           totalMidNightAwaikingsTime ?? this.totalMidNightAwaikingsTime,
       wakeUpTime: wakeUpTime ?? this.wakeUpTime,
       outBedTime: outBedTime ?? this.outBedTime,
+      sleepQuality: sleepQuality ?? this.sleepQuality,
     );
   }
 }

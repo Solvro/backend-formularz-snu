@@ -52,6 +52,7 @@ class FormEntryEndpoint extends Endpoint {
         wakeUpTime: data.wakeUpTime,
         outBedTime: data.outBedTime,
         totalMidNightAwaikingsTime: data.totalMidNightAwaikingsTime,
+        sleepQuality: data.sleepQuality,
       ),
     ]);
   }

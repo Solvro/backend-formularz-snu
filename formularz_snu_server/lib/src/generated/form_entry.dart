@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'participant.dart' as _i2;
+import 'sleep_score.dart' as _i3;
 
 abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
   FormEntry._({
@@ -24,6 +25,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     required this.totalMidNightAwaikingsTime,
     required this.wakeUpTime,
     required this.outBedTime,
+    required this.sleepQuality,
   }) : timestamp = timestamp ?? DateTime.now();
 
   factory FormEntry({
@@ -37,6 +39,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i3.SleepScore sleepQuality,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -61,6 +64,8 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
+      sleepQuality:
+          _i3.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
     );
   }
 
@@ -89,6 +94,8 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
 
   DateTime outBedTime;
 
+  _i3.SleepScore sleepQuality;
+
   @override
   _i1.Table get table => t;
 
@@ -103,6 +110,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i3.SleepScore? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -117,6 +125,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
       'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
       'wakeUpTime': wakeUpTime.toJson(),
       'outBedTime': outBedTime.toJson(),
+      'sleepQuality': sleepQuality.toJson(),
     };
   }
 
@@ -133,6 +142,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
       'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
       'wakeUpTime': wakeUpTime.toJson(),
       'outBedTime': outBedTime.toJson(),
+      'sleepQuality': sleepQuality.toJson(),
     };
   }
 
@@ -180,6 +190,7 @@ class _FormEntryImpl extends FormEntry {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i3.SleepScore sleepQuality,
   }) : super._(
           id: id,
           participantId: participantId,
@@ -191,6 +202,7 @@ class _FormEntryImpl extends FormEntry {
           totalMidNightAwaikingsTime: totalMidNightAwaikingsTime,
           wakeUpTime: wakeUpTime,
           outBedTime: outBedTime,
+          sleepQuality: sleepQuality,
         );
 
   @override
@@ -205,6 +217,7 @@ class _FormEntryImpl extends FormEntry {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i3.SleepScore? sleepQuality,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,
@@ -221,6 +234,7 @@ class _FormEntryImpl extends FormEntry {
           totalMidNightAwaikingsTime ?? this.totalMidNightAwaikingsTime,
       wakeUpTime: wakeUpTime ?? this.wakeUpTime,
       outBedTime: outBedTime ?? this.outBedTime,
+      sleepQuality: sleepQuality ?? this.sleepQuality,
     );
   }
 }
@@ -260,6 +274,11 @@ class FormEntryTable extends _i1.Table {
       'outBedTime',
       this,
     );
+    sleepQuality = _i1.ColumnEnum(
+      'sleepQuality',
+      this,
+      _i1.EnumSerialization.byIndex,
+    );
   }
 
   late final _i1.ColumnInt participantId;
@@ -279,6 +298,8 @@ class FormEntryTable extends _i1.Table {
   late final _i1.ColumnDateTime wakeUpTime;
 
   late final _i1.ColumnDateTime outBedTime;
+
+  late final _i1.ColumnEnum<_i3.SleepScore> sleepQuality;
 
   _i2.ParticipantTable get participant {
     if (_participant != null) return _participant!;
@@ -304,6 +325,7 @@ class FormEntryTable extends _i1.Table {
         totalMidNightAwaikingsTime,
         wakeUpTime,
         outBedTime,
+        sleepQuality,
       ];
 
   @override

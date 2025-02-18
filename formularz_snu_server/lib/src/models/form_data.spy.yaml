@@ -6,3 +6,4 @@ fields:
   totalMidNightAwaikingsTime: Duration
   wakeUpTime: DateTime
   outBedTime: DateTime
+  sleepQuality: SleepScore

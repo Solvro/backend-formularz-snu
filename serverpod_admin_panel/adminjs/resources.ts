@@ -51,7 +51,26 @@ export function setupTables(db: DatabaseMetadata) {
     {
       resource: db.table("form_entries"),
       features: [importExportFeature({ componentLoader })],
-      options: { navigation, filterProperties: ["participantId", "timestamp"] },
+      options: {
+        navigation,
+        filterProperties: ["participantId", "timestamp"],
+        properties: {
+          sleepQuality: {
+            availableValues: [
+              { value: "one", label: "one" },
+              { value: "two", label: "two" },
+              { value: "three", label: "three" },
+              { value: "four", label: "four" },
+              { value: "five", label: "five" },
+              { value: "six", label: "six" },
+              { value: "seven", label: "seven" },
+              { value: "eight", label: "eight" },
+              { value: "nine", label: "nine" },
+              { value: "ten", label: "ten" },
+            ],
+          },
+        },
+      },
     },
     ...(baseConfig.show_log_tables
       ? logTables.map((table) => ({

@@ -36,17 +36,17 @@ Future<List<int>> exportFormEntriesToExcel(
       IntCellValue(entry.participantId),
       TextCellValue(entry.participant?.email ?? ""),
       TextCellValue(entry.participant?.name ?? ""),
-      DateCellValue.fromDateTime(entry.timestamp),
-      DateCellValue.fromDateTime(entry.inBedStartTime),
-      DateCellValue.fromDateTime(entry.fallingAsleepTime),
+      DateTimeCellValue.fromDateTime(entry.timestamp),
+      DateTimeCellValue.fromDateTime(entry.inBedStartTime),
+      DateTimeCellValue.fromDateTime(entry.fallingAsleepTime),
       TimeCellValue.fromDuration(
         // ile czasu zajęło zaśnięcie
         entry.inBedStartTime.difference(entry.fallingAsleepTime),
       ),
       IntCellValue(entry.midNightAwaikingsCount),
       TimeCellValue.fromDuration(entry.totalMidNightAwaikingsTime),
-      DateCellValue.fromDateTime(entry.wakeUpTime),
-      DateCellValue.fromDateTime(entry.outBedTime),
+      DateTimeCellValue.fromDateTime(entry.wakeUpTime),
+      DateTimeCellValue.fromDateTime(entry.outBedTime),
       TimeCellValue.fromDuration(
         // Całkowity czas spędzony w łóżku
         entry.outBedTime.difference(entry.inBedStartTime),

@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'participant.dart' as _i2;
+import 'sleep_score.dart' as _i3;
 
 abstract class FormEntry implements _i1.SerializableModel {
   FormEntry._({
@@ -24,6 +25,7 @@ abstract class FormEntry implements _i1.SerializableModel {
     required this.totalMidNightAwaikingsTime,
     required this.wakeUpTime,
     required this.outBedTime,
+    required this.sleepQuality,
   }) : timestamp = timestamp ?? DateTime.now();
 
   factory FormEntry({
@@ -37,6 +39,7 @@ abstract class FormEntry implements _i1.SerializableModel {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i3.SleepScore sleepQuality,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -61,6 +64,8 @@ abstract class FormEntry implements _i1.SerializableModel {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
+      sleepQuality:
+          _i3.SleepScore.fromJson((jsonSerialization['sleepQuality'] as int)),
     );
   }
 
@@ -87,6 +92,8 @@ abstract class FormEntry implements _i1.SerializableModel {
 
   DateTime outBedTime;
 
+  _i3.SleepScore sleepQuality;
+
   FormEntry copyWith({
     int? id,
     int? participantId,
@@ -98,6 +105,7 @@ abstract class FormEntry implements _i1.SerializableModel {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i3.SleepScore? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -112,6 +120,7 @@ abstract class FormEntry implements _i1.SerializableModel {
       'totalMidNightAwaikingsTime': totalMidNightAwaikingsTime.toJson(),
       'wakeUpTime': wakeUpTime.toJson(),
       'outBedTime': outBedTime.toJson(),
+      'sleepQuality': sleepQuality.toJson(),
     };
   }
 
@@ -135,6 +144,7 @@ class _FormEntryImpl extends FormEntry {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
+    required _i3.SleepScore sleepQuality,
   }) : super._(
           id: id,
           participantId: participantId,
@@ -146,6 +156,7 @@ class _FormEntryImpl extends FormEntry {
           totalMidNightAwaikingsTime: totalMidNightAwaikingsTime,
           wakeUpTime: wakeUpTime,
           outBedTime: outBedTime,
+          sleepQuality: sleepQuality,
         );
 
   @override
@@ -160,6 +171,7 @@ class _FormEntryImpl extends FormEntry {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
+    _i3.SleepScore? sleepQuality,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,
@@ -176,6 +188,7 @@ class _FormEntryImpl extends FormEntry {
           totalMidNightAwaikingsTime ?? this.totalMidNightAwaikingsTime,
       wakeUpTime: wakeUpTime ?? this.wakeUpTime,
       outBedTime: outBedTime ?? this.outBedTime,
+      sleepQuality: sleepQuality ?? this.sleepQuality,
     );
   }
 }

@@ -15,10 +15,12 @@ import 'form_data.dart' as _i3;
 import 'form_entry.dart' as _i4;
 import 'global_config.dart' as _i5;
 import 'participant.dart' as _i6;
+import 'sleep_score.dart' as _i7;
 export 'form_data.dart';
 export 'form_entry.dart';
 export 'global_config.dart';
 export 'participant.dart';
+export 'sleep_score.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
   Protocol._();
@@ -89,6 +91,12 @@ class Protocol extends _i1.SerializationManagerServer {
           columnType: _i2.ColumnType.timestampWithoutTimeZone,
           isNullable: false,
           dartType: 'DateTime',
+        ),
+        _i2.ColumnDefinition(
+          name: 'sleepQuality',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'protocol:SleepScore',
         ),
       ],
       foreignKeys: [
@@ -246,6 +254,9 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i6.Participant) {
       return _i6.Participant.fromJson(data) as T;
     }
+    if (t == _i7.SleepScore) {
+      return _i7.SleepScore.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i3.FormData?>()) {
       return (data != null ? _i3.FormData.fromJson(data) : null) as T;
     }
@@ -257,6 +268,9 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (t == _i1.getType<_i6.Participant?>()) {
       return (data != null ? _i6.Participant.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i7.SleepScore?>()) {
+      return (data != null ? _i7.SleepScore.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -279,6 +293,9 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (data is _i6.Participant) {
       return 'Participant';
+    }
+    if (data is _i7.SleepScore) {
+      return 'SleepScore';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -304,6 +321,9 @@ class Protocol extends _i1.SerializationManagerServer {
     }
     if (dataClassName == 'Participant') {
       return deserialize<_i6.Participant>(data['data']);
+    }
+    if (dataClassName == 'SleepScore') {
+      return deserialize<_i7.SleepScore>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);

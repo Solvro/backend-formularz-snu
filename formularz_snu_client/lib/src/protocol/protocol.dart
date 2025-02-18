@@ -14,10 +14,12 @@ import 'form_data.dart' as _i2;
 import 'form_entry.dart' as _i3;
 import 'global_config.dart' as _i4;
 import 'participant.dart' as _i5;
+import 'sleep_score.dart' as _i6;
 export 'form_data.dart';
 export 'form_entry.dart';
 export 'global_config.dart';
 export 'participant.dart';
+export 'sleep_score.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
@@ -45,6 +47,9 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i5.Participant) {
       return _i5.Participant.fromJson(data) as T;
     }
+    if (t == _i6.SleepScore) {
+      return _i6.SleepScore.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i2.FormData?>()) {
       return (data != null ? _i2.FormData.fromJson(data) : null) as T;
     }
@@ -56,6 +61,9 @@ class Protocol extends _i1.SerializationManager {
     }
     if (t == _i1.getType<_i5.Participant?>()) {
       return (data != null ? _i5.Participant.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i6.SleepScore?>()) {
+      return (data != null ? _i6.SleepScore.fromJson(data) : null) as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -75,6 +83,9 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data is _i5.Participant) {
       return 'Participant';
+    }
+    if (data is _i6.SleepScore) {
+      return 'SleepScore';
     }
     return null;
   }
@@ -96,6 +107,9 @@ class Protocol extends _i1.SerializationManager {
     }
     if (dataClassName == 'Participant') {
       return deserialize<_i5.Participant>(data['data']);
+    }
+    if (dataClassName == 'SleepScore') {
+      return deserialize<_i6.SleepScore>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

@@ -31,11 +31,15 @@ Future<List<int>> exportFormEntriesToExcel(
 
   final entries = await FormEntry.db.find(session);
   for (final entry in entries) {
+    final user = await Participant.db.findById(
+      session,
+      entry.participantId,
+    );
     sheet.appendRow([
       IntCellValue(entry.id!),
       IntCellValue(entry.participantId),
-      TextCellValue(entry.participant?.email ?? ""),
-      TextCellValue(entry.participant?.name ?? ""),
+      TextCellValue(user?.email ?? ""),
+      TextCellValue(user?.name ?? ""),
       DateTimeCellValue.fromDateTime(entry.timestamp),
       DateTimeCellValue.fromDateTime(entry.inBedStartTime),
       DateTimeCellValue.fromDateTime(entry.fallingAsleepTime),

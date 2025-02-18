@@ -41,7 +41,7 @@ Future<List<int>> exportFormEntriesToExcel(
       DateTimeCellValue.fromDateTime(entry.fallingAsleepTime),
       TimeCellValue.fromDuration(
         // ile czasu zajęło zaśnięcie
-        entry.inBedStartTime.difference(entry.fallingAsleepTime),
+        entry.fallingAsleepTime.difference(entry.inBedStartTime),
       ),
       IntCellValue(entry.midNightAwaikingsCount),
       TimeCellValue.fromDuration(entry.totalMidNightAwaikingsTime),
@@ -56,7 +56,20 @@ Future<List<int>> exportFormEntriesToExcel(
         entry.wakeUpTime.difference(entry.fallingAsleepTime),
       ),
       // Ocena snu
-      TextCellValue("BRAK OCENY"),
+      IntCellValue(
+        switch (entry.sleepQuality) {
+          SleepScore.one => 1,
+          SleepScore.two => 2,
+          SleepScore.three => 3,
+          SleepScore.four => 4,
+          SleepScore.five => 5,
+          SleepScore.six => 6,
+          SleepScore.seven => 7,
+          SleepScore.eight => 8,
+          SleepScore.nine => 9,
+          SleepScore.ten => 10,
+        },
+      ),
     ]);
   }
 

@@ -4,10 +4,10 @@ import "../generated/participant.dart";
 
 class ParticipantEndpoint extends Endpoint {
   Future<bool> doesThisEmailExist(Session session, String email) async {
-    final participantMaybe = await Participant.db.find(
+    final participantMaybe = await Participant.db.findFirstRow(
       session,
       where: (t) => t.email.equals(email),
     );
-    return participantMaybe.isNotEmpty;
+    return participantMaybe != null;
   }
 }

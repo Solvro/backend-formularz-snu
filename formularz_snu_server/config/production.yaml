@@ -15,3 +15,7 @@ webServer:
   port: 8082
   publicPort: 443
   publicScheme: https
+
+sessionLogs:
+  persistentEnabled: true
+  consoleEnabled: true

@@ -48,7 +48,8 @@ Future<List<int>> exportFormEntriesToExcel(
         entry.fallingAsleepTime.difference(entry.inBedStartTime).inMinutes,
       ),
       IntCellValue(entry.midNightAwaikingsCount),
-      IntCellValue(entry.totalMidNightAwaikingsTime.inMinutes), // Całkowity czas przebudzeń w nocy
+      IntCellValue(entry.totalMidNightAwaikingsTime
+          .inMinutes), // Całkowity czas przebudzeń w nocy
       DateTimeCellValue.fromDateTime(entry.wakeUpTime),
       DateTimeCellValue.fromDateTime(entry.outBedTime),
       IntCellValue(
@@ -74,7 +75,7 @@ Future<List<int>> exportFormEntriesToExcel(
           SleepScore.ten => 10,
         },
       ),
-    ,,,,]);
+    ]);
   }
 
   return excel.encode()!;

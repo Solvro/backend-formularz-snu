@@ -1,13 +1,9 @@
-enum: SleepScore
+enum: SleepScore2
 serialized: byName
 values:
+  - zero
   - one
   - two
   - three
   - four
   - five
-  - six
-  - seven
-  - eight
-  - nine
-  - ten

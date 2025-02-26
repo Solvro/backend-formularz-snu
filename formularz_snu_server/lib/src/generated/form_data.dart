@@ -31,7 +31,7 @@ abstract class FormData
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i2.SleepScore sleepQuality,
+    required _i2.SleepScore2 sleepQuality,
   }) = _FormDataImpl;
 
   factory FormData.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -48,7 +48,7 @@ abstract class FormData
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality: _i2.SleepScore.fromJson(
+      sleepQuality: _i2.SleepScore2.fromJson(
           (jsonSerialization['sleepQuality'] as String)),
     );
   }
@@ -65,7 +65,7 @@ abstract class FormData
 
   DateTime outBedTime;
 
-  _i2.SleepScore sleepQuality;
+  _i2.SleepScore2 sleepQuality;
 
   FormData copyWith({
     DateTime? inBedStartTime,
@@ -74,7 +74,7 @@ abstract class FormData
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i2.SleepScore? sleepQuality,
+    _i2.SleepScore2? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -116,7 +116,7 @@ class _FormDataImpl extends FormData {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i2.SleepScore sleepQuality,
+    required _i2.SleepScore2 sleepQuality,
   }) : super._(
           inBedStartTime: inBedStartTime,
           fallingAsleepTime: fallingAsleepTime,
@@ -135,7 +135,7 @@ class _FormDataImpl extends FormData {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i2.SleepScore? sleepQuality,
+    _i2.SleepScore2? sleepQuality,
   }) {
     return FormData(
       inBedStartTime: inBedStartTime ?? this.inBedStartTime,

@@ -39,7 +39,7 @@ abstract class FormEntry implements _i1.SerializableModel {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i3.SleepScore sleepQuality,
+    required _i3.SleepScore2 sleepQuality,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -64,7 +64,7 @@ abstract class FormEntry implements _i1.SerializableModel {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality: _i3.SleepScore.fromJson(
+      sleepQuality: _i3.SleepScore2.fromJson(
           (jsonSerialization['sleepQuality'] as String)),
     );
   }
@@ -92,7 +92,7 @@ abstract class FormEntry implements _i1.SerializableModel {
 
   DateTime outBedTime;
 
-  _i3.SleepScore sleepQuality;
+  _i3.SleepScore2 sleepQuality;
 
   FormEntry copyWith({
     int? id,
@@ -105,7 +105,7 @@ abstract class FormEntry implements _i1.SerializableModel {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i3.SleepScore? sleepQuality,
+    _i3.SleepScore2? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -144,7 +144,7 @@ class _FormEntryImpl extends FormEntry {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i3.SleepScore sleepQuality,
+    required _i3.SleepScore2 sleepQuality,
   }) : super._(
           id: id,
           participantId: participantId,
@@ -171,7 +171,7 @@ class _FormEntryImpl extends FormEntry {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i3.SleepScore? sleepQuality,
+    _i3.SleepScore2? sleepQuality,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,

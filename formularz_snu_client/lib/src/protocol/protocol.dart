@@ -47,8 +47,8 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i5.Participant) {
       return _i5.Participant.fromJson(data) as T;
     }
-    if (t == _i6.SleepScore) {
-      return _i6.SleepScore.fromJson(data) as T;
+    if (t == _i6.SleepScore2) {
+      return _i6.SleepScore2.fromJson(data) as T;
     }
     if (t == _i1.getType<_i2.FormData?>()) {
       return (data != null ? _i2.FormData.fromJson(data) : null) as T;
@@ -62,8 +62,8 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i5.Participant?>()) {
       return (data != null ? _i5.Participant.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i6.SleepScore?>()) {
-      return (data != null ? _i6.SleepScore.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i6.SleepScore2?>()) {
+      return (data != null ? _i6.SleepScore2.fromJson(data) : null) as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -84,8 +84,8 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i5.Participant) {
       return 'Participant';
     }
-    if (data is _i6.SleepScore) {
-      return 'SleepScore';
+    if (data is _i6.SleepScore2) {
+      return 'SleepScore2';
     }
     return null;
   }
@@ -108,8 +108,8 @@ class Protocol extends _i1.SerializationManager {
     if (dataClassName == 'Participant') {
       return deserialize<_i5.Participant>(data['data']);
     }
-    if (dataClassName == 'SleepScore') {
-      return deserialize<_i6.SleepScore>(data['data']);
+    if (dataClassName == 'SleepScore2') {
+      return deserialize<_i6.SleepScore2>(data['data']);
     }
     return super.deserializeByClassName(data);
   }

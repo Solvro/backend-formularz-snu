@@ -39,7 +39,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i3.SleepScore sleepQuality,
+    required _i3.SleepScore2 sleepQuality,
   }) = _FormEntryImpl;
 
   factory FormEntry.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -64,7 +64,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['wakeUpTime']),
       outBedTime:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['outBedTime']),
-      sleepQuality: _i3.SleepScore.fromJson(
+      sleepQuality: _i3.SleepScore2.fromJson(
           (jsonSerialization['sleepQuality'] as String)),
     );
   }
@@ -94,7 +94,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
 
   DateTime outBedTime;
 
-  _i3.SleepScore sleepQuality;
+  _i3.SleepScore2 sleepQuality;
 
   @override
   _i1.Table get table => t;
@@ -110,7 +110,7 @@ abstract class FormEntry implements _i1.TableRow, _i1.ProtocolSerialization {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i3.SleepScore? sleepQuality,
+    _i3.SleepScore2? sleepQuality,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -190,7 +190,7 @@ class _FormEntryImpl extends FormEntry {
     required Duration totalMidNightAwaikingsTime,
     required DateTime wakeUpTime,
     required DateTime outBedTime,
-    required _i3.SleepScore sleepQuality,
+    required _i3.SleepScore2 sleepQuality,
   }) : super._(
           id: id,
           participantId: participantId,
@@ -217,7 +217,7 @@ class _FormEntryImpl extends FormEntry {
     Duration? totalMidNightAwaikingsTime,
     DateTime? wakeUpTime,
     DateTime? outBedTime,
-    _i3.SleepScore? sleepQuality,
+    _i3.SleepScore2? sleepQuality,
   }) {
     return FormEntry(
       id: id is int? ? id : this.id,
@@ -299,7 +299,7 @@ class FormEntryTable extends _i1.Table {
 
   late final _i1.ColumnDateTime outBedTime;
 
-  late final _i1.ColumnEnum<_i3.SleepScore> sleepQuality;
+  late final _i1.ColumnEnum<_i3.SleepScore2> sleepQuality;
 
   _i2.ParticipantTable get participant {
     if (_participant != null) return _participant!;

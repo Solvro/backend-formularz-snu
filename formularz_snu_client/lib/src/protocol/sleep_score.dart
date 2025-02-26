@@ -11,20 +11,18 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 
-enum SleepScore implements _i1.SerializableModel {
+enum SleepScore2 implements _i1.SerializableModel {
+  zero,
   one,
   two,
   three,
   four,
-  five,
-  six,
-  seven,
-  eight,
-  nine,
-  ten;
+  five;
 
-  static SleepScore fromJson(String name) {
+  static SleepScore2 fromJson(String name) {
     switch (name) {
+      case 'zero':
+        return zero;
       case 'one':
         return one;
       case 'two':
@@ -35,19 +33,9 @@ enum SleepScore implements _i1.SerializableModel {
         return four;
       case 'five':
         return five;
-      case 'six':
-        return six;
-      case 'seven':
-        return seven;
-      case 'eight':
-        return eight;
-      case 'nine':
-        return nine;
-      case 'ten':
-        return ten;
       default:
         throw ArgumentError(
-            'Value "$name" cannot be converted to "SleepScore"');
+            'Value "$name" cannot be converted to "SleepScore2"');
     }
   }
 

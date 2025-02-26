@@ -96,7 +96,7 @@ class Protocol extends _i1.SerializationManagerServer {
           name: 'sleepQuality',
           columnType: _i2.ColumnType.text,
           isNullable: false,
-          dartType: 'protocol:SleepScore',
+          dartType: 'protocol:SleepScore2',
         ),
       ],
       foreignKeys: [
@@ -254,8 +254,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i6.Participant) {
       return _i6.Participant.fromJson(data) as T;
     }
-    if (t == _i7.SleepScore) {
-      return _i7.SleepScore.fromJson(data) as T;
+    if (t == _i7.SleepScore2) {
+      return _i7.SleepScore2.fromJson(data) as T;
     }
     if (t == _i1.getType<_i3.FormData?>()) {
       return (data != null ? _i3.FormData.fromJson(data) : null) as T;
@@ -269,8 +269,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i1.getType<_i6.Participant?>()) {
       return (data != null ? _i6.Participant.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i7.SleepScore?>()) {
-      return (data != null ? _i7.SleepScore.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i7.SleepScore2?>()) {
+      return (data != null ? _i7.SleepScore2.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -294,8 +294,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i6.Participant) {
       return 'Participant';
     }
-    if (data is _i7.SleepScore) {
-      return 'SleepScore';
+    if (data is _i7.SleepScore2) {
+      return 'SleepScore2';
     }
     className = _i2.Protocol().getClassNameForObject(data);
     if (className != null) {
@@ -322,8 +322,8 @@ class Protocol extends _i1.SerializationManagerServer {
     if (dataClassName == 'Participant') {
       return deserialize<_i6.Participant>(data['data']);
     }
-    if (dataClassName == 'SleepScore') {
-      return deserialize<_i7.SleepScore>(data['data']);
+    if (dataClassName == 'SleepScore2') {
+      return deserialize<_i7.SleepScore2>(data['data']);
     }
     if (dataClassName.startsWith('serverpod.')) {
       data['className'] = dataClassName.substring(10);

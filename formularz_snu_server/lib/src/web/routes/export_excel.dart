@@ -64,16 +64,12 @@ Future<List<int>> exportFormEntriesToExcel(
       IntCellValue(
         // Ocena snu
         switch (entry.sleepQuality) {
-          SleepScore.one => 1,
-          SleepScore.two => 2,
-          SleepScore.three => 3,
-          SleepScore.four => 4,
-          SleepScore.five => 5,
-          SleepScore.six => 6,
-          SleepScore.seven => 7,
-          SleepScore.eight => 8,
-          SleepScore.nine => 9,
-          SleepScore.ten => 10,
+          SleepScore2.zero => 0,
+          SleepScore2.one => 1,
+          SleepScore2.two => 2,
+          SleepScore2.three => 3,
+          SleepScore2.four => 4,
+          SleepScore2.five => 5,
         },
       ),
     ]);

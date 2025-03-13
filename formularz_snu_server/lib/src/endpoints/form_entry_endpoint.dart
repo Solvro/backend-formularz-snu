@@ -1,12 +1,14 @@
 import "package:serverpod/serverpod.dart";
 
 import "../generated/protocol.dart";
+import "../utils/assert_auth.dart";
 
 class FormEntryEndpoint extends Endpoint {
   Future<bool> hasTodayAlreadySentResponse(
     Session session,
     String participantEmail,
   ) async {
+    assertAuth(session);
     final participant = await Participant.db.findFirstRow(
       session,
       where: (t) => t.email.equals(participantEmail),
@@ -32,6 +34,7 @@ class FormEntryEndpoint extends Endpoint {
     FormData data,
     String participantEmail,
   ) async {
+    assertAuth(session);
     final participant = await Participant.db.findFirstRow(
       session,
       where: (t) => t.email.equals(participantEmail),

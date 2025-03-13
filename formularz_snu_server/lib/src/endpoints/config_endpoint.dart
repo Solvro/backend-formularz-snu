@@ -1,9 +1,11 @@
 import "package:serverpod/serverpod.dart";
 
 import "../generated/protocol.dart";
+import "../utils/assert_auth.dart";
 
 class ConfigEndpoint extends Endpoint {
   Future<bool> isStudyInProgress(Session session) async {
+    assertAuth(session);
     final configs = await GlobalConfig.db.find(session);
     if (configs.length != 1) {
       throw Exception(

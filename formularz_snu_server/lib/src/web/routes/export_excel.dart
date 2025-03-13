@@ -4,6 +4,7 @@ import "package:excel/excel.dart";
 import "package:serverpod/serverpod.dart";
 
 import "../../generated/protocol.dart";
+import "../../utils/assert_auth.dart";
 
 Future<List<int>> exportFormEntriesToExcel(
   Session session,
@@ -81,6 +82,7 @@ Future<List<int>> exportFormEntriesToExcel(
 class ExportExcelRoute extends Route {
   @override
   Future<bool> handleCall(Session session, HttpRequest request) async {
+    assertAuth(session);
     final excel = await exportFormEntriesToExcel(session);
     final response = request.response;
     response.headers.contentType = ContentType.parse(

@@ -16,14 +16,9 @@ class FormEntryEndpoint extends Endpoint {
     if (participant == null || participant.id == null) {
       throw Exception("Participant with email $participantEmail not found.");
     }
-    final today =
-        DateTime.now().toUtc().add(const Duration(hours: 1)); // Warsaw is UTC+1
-    final startOfDay = DateTime(today.year, today.month, today.day)
-        .toUtc()
-        .add(const Duration(hours: 1));
-    final endOfDay = DateTime(today.year, today.month, today.day, 23, 59, 59)
-        .toUtc()
-        .add(const Duration(hours: 1));
+    final today = DateTime.now();
+    final startOfDay = DateTime(today.year, today.month, today.day);
+    final endOfDay = DateTime(today.year, today.month, today.day, 23, 59, 59);
 
     final entry = await FormEntry.db.findFirstRow(
       session,

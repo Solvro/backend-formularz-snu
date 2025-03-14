@@ -1,3 +1,5 @@
+ARG TOKEN
+
 FROM dart:3.7.0 AS build
 
 WORKDIR /app

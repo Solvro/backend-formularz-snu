@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 
 RUN dart pub get
-RUN dart compile exe bin/main.dart -o bin/server
+RUN dart compile exe bin/main.dart -o bin/server --define=TOKEN=$TOKEN
 
 FROM alpine:latest
 
@@ -24,4 +24,4 @@ EXPOSE 8080
 EXPOSE 8081
 EXPOSE 8082
 
-ENTRYPOINT ./server --mode=$runmode --server-id=$serverid --logging=$logging --role=$role --dart-define=$TOKEN
+ENTRYPOINT ./server --mode=$runmode --server-id=$serverid --logging=$logging --role=$role 

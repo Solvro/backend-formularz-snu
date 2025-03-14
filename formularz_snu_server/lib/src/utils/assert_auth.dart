@@ -17,9 +17,12 @@ void assertAuth(Session session) {
   if (!thisToken.startsWith("Bearer ")) {
     throw Exception("Invalid authorization header.");
   }
-  print("thisToken: $thisToken");
-  print("token: $token");
-  print("Extracted token: ${thisToken.replaceFirst("Bearer ", "")}");
+
+  session.serverpod.loadCustomPasswords([
+    (alias: "TOKEN", envName: "TOKEN"),
+  ]);
+  final token = session.serverpod.getPassword("TOKEN");
+
   if (thisToken.replaceFirst("Bearer ", "") != token) {
     throw Exception("Invalid authorization token.");
   }

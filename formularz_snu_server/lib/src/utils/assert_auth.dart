@@ -14,7 +14,11 @@ void assertAuth(Session session) {
     throw Exception("No authorization header found.");
   }
 
-  if (thisToken != token) {
+  if (!thisToken.startsWith("Bearer ")) {
+    throw Exception("Invalid authorization header.");
+  }
+
+  if (thisToken.replaceFirst("Bearer ", "") != token) {
     throw Exception("Invalid authorization token.");
   }
 }
